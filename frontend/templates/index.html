@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Inventario de Productos</h1>
+    <a href="{{ url_for('create') }}" class="btn btn-primary">Agregar Producto</a>
+    
+    <form class="mt-4" method="GET" action="{{ url_for('index') }}">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" name="search" class="form-control" placeholder="Buscar por nombre...">
+            </div>
+            <div class="col-md-4">
+                <select name="category" class="form-select">
+                    <option value="">Todas las categorías</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="celular">Celular</option>
+                    <option value="pc">PC</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-secondary">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.sold_date }}</td>
+                    <td>{{ product.sold_price }}</td>
+                    <td>
+                        <a href="{{ url_for('update', product_id=product.id) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ url_for('delete', product_id=product.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        <a href="{{ url_for('add_stock', product_id=product.id) }}" class="btn btn-secondary">Agregar a Stock</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

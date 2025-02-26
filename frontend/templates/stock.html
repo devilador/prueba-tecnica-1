@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Agregar a Stock</h1>
+    <form action="{{ url_for('add_stock', product_id=product.id) }}" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="additional_quantity" class="form-label">Cantidad a Agregar</label>
+            <input type="number" class="form-control" id="additional_quantity" name="additional_quantity" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+{% endblock %}

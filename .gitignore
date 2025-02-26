@@ -1,0 +1,37 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+.pyenv/
+# Archivos de configuración
+*.env
+# Archivos generados
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.log
+# Archivos de compilación
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+*.egg-info/
+.installed.cfg
+*.egg-info/
+*.tar.gz
+*.log
+# Docker
+*.log
+docker-compose.yml
+Dockerfile
+# IDEs
+.vscode/
+.idea/
+# Sistema operativo
+.DS_Store
+*.swp
